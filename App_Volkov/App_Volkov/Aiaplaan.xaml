@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_Volkov.Aiaplaan">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Notes of the Day" FontSize="Large" FontAttributes="Bold" Margin="10"/>
+            <ListView x:Name="listView" HasUnevenRows="True" Margin="10">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Image x:Name="image" Source="img0.jpg" WidthRequest="80" HeightRequest="80" Margin="5"/>
+                                <TimePicker x:Name="timePicker" Format="HH:mm" Margin="5" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

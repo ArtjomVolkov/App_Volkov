@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_Volkov.Horoskop">
+    <ContentPage.Content>
+        <StackLayout Padding="20"
+                     BackgroundColor="#333333">
+            <StackLayout Orientation="Horizontal"
+                         Margin="0,20,0,10"
+                         HorizontalOptions="Center">
+                <Label Text="Выберите дату:"
+                       VerticalOptions="Start"
+                       FontSize="Body"
+                       TextColor="#FFFFFF" />
+                <DatePicker x:Name="horoscopeDatePicker"
+                            DateSelected="HoroscopeDate"
+                            Margin="10,0,0,0"
+                            WidthRequest="180"
+                            BackgroundColor="#FFFFFF"
+                            TextColor="#333333" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal"
+                         Margin="0,0,0,10"
+                         HorizontalOptions="Center">
+                <Label Text="Введите название гороскопа:"
+                       VerticalOptions="Start"
+                       FontSize="Small"
+                       TextColor="#FFFFFF"
+                       HeightRequest="180"
+                       WidthRequest="150"/>
+                <Entry x:Name="horoscopeNameEntry"
+                       TextChanged="HoroscopeNameEntry"
+                       WidthRequest="180"
+                       BackgroundColor="#FFFFFF"
+                       TextColor="#333333"/>
+            </StackLayout>
+
+            <Image x:Name="horoscopeImage"
+                   VerticalOptions="CenterAndExpand"
+                   HeightRequest="180"
+                   BackgroundColor="#FFFFFF" />
+
+            <Editor x:Name="horoscopeDescriptionEditor"
+                    Text="{Binding SelectedHoroscopeDescription}"
+                    VerticalOptions="FillAndExpand"
+                    BackgroundColor="#FFFFFF"
+                    HeightRequest="100"
+                    TextColor="#333333"
+                    Margin="0,10" />
+
+            <ListView x:Name="horoscopeListView"
+                      ItemsSource="{Binding HoroscopeNames}"
+                      ItemSelected="HoroscopeList"
+                      VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand"
+                      BackgroundColor="#FFFFFF"
+                      SeparatorColor="#E5E5E5">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding}"
+                                  TextColor="#333333" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
