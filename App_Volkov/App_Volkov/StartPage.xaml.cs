@@ -12,8 +12,8 @@ namespace App_Volkov
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StartPage : ContentPage
     {
-        List<ContentPage> contentPages = new List<ContentPage>() { new Horoskop(),new Aiaplaan() };
-        List<string> tekstid = new List<string> { "Horoskop","Aiaplaan" };
+        List<ContentPage> contentPages = new List<ContentPage>() { new Horoskop(),new Aiaplaan(),new My_project() };
+        List<string> tekstid = new List<string> { "Horoskop","Aiaplaan","My projekt" };
         public StartPage()
         {
             StackLayout st = new StackLayout

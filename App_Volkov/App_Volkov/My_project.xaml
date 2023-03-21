@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_Volkov.My_project">
+    <StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="PlankButton" Text="Планка" Clicked="OnPlankClicked"/>
+            <Button x:Name="ExerciseButton" Text="Упражнения в зале" Clicked="OnExerciseClicked"/>
+        </StackLayout>
+        <Label x:Name="TitleLabel" Text="Выберите время таймера:" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+        <Image x:Name="ExerciseImage" Source="exercise.jpg" IsVisible="False" Aspect="AspectFit" HeightRequest="200"/>
+        <Image x:Name="PlankImage" Source="plank.jpg" IsVisible="False" Aspect="AspectFit" HeightRequest="200"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Button x:Name="Timer1Button" Text="30 Секунд" Clicked="OnTimer1Clicked"/>
+            <Button x:Name="Timer2Button" Text="1 Минута" Clicked="OnTimer2Clicked"/>
+            <Button x:Name="Timer3Button" Text="2 Минуты" Clicked="OnTimer3Clicked"/>
+        </StackLayout>
+        <Button x:Name="Stop" Text="Стоп таймер" Clicked="OnStopTimerClicked"/>
+    </StackLayout>
+</ContentPage>

@@ -3,7 +3,7 @@
              x:Class="App_Volkov.Aiaplaan">
     <StackLayout>
         <Label Text="Распорядок дня" FontSize="Large" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-        <ListView x:Name="myListView" ItemsSource="{Binding tasks}" ItemTapped="OnListViewItemTapped" HasUnevenRows="True" SeparatorVisibility="None">
+        <ListView x:Name="myListView" ItemsSource="{Binding tasks}" ItemTapped="ListViewItem" HasUnevenRows="True" SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
