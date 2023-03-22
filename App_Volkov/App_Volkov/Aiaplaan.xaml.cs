@@ -61,7 +61,7 @@ namespace App_Volkov
             {
                 var task = (Task)e.Item;
                 var imageSource = ImageSource.FromFile(task.Image);
-                await DisplayAlert("Описание задачи", $"{task.Description}\n{new ImageSourceConverter().ConvertToInvariantString(task.Image)}", "OK");
+                await DisplayAlert("Описание задачи", task.Description,"OK");
                 myListView.SelectedItem = null;
             }
         }
