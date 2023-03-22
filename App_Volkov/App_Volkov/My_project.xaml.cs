@@ -8,14 +8,16 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Xamarin.Forms.PlatformConfiguration;
+
 
 namespace App_Volkov
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class My_project : ContentPage
     {
-        private bool isPlankSelected;
-        private bool isTimerRunning;
+        public bool isPlankSelected;
+        public bool isTimerRunning;
         private bool shouldStopTimer;
 
         public My_project()
@@ -23,44 +25,76 @@ namespace App_Volkov
             InitializeComponent();
         }
 
-        private void OnPlankClicked(object sender, EventArgs e)
+        private void PlankClicked(object sender, EventArgs e)
         {
             isPlankSelected = true;
+            TitleLabel.IsVisible= true;
             TitleLabel.Text = "Выберите время таймера:";
             ExerciseImage.IsVisible = false;
             PlankImage.IsVisible = true;
+            Timer1Button.IsVisible = true;
+            Timer2Button.IsVisible = true;
+            Timer3Button.IsVisible = true;
+            Timer1Button.IsEnabled = true;
+            Timer2Button.IsEnabled = true;
+            Timer3Button.IsEnabled = true;
         }
 
-        private void OnExerciseClicked(object sender, EventArgs e)
+        private void ExerciseClicked(object sender, EventArgs e)
         {
             isPlankSelected = false;
+            TitleLabel.IsVisible = true;
             TitleLabel.Text = "Выберите время таймера:";
             PlankImage.IsVisible = false;
             ExerciseImage.IsVisible = true;
+            Timer1Button.IsVisible = true;
+            Timer2Button.IsVisible = true;
+            Timer3Button.IsVisible = true;
+            Timer1Button.IsEnabled = true;
+            Timer2Button.IsEnabled = true;
+            Timer3Button.IsEnabled = true;
         }
 
-        private async void PlaySound()
+        /*private async void PlaySound()
         {
             await TextToSpeech.SpeakAsync("Таймер окончен");
-            // Воспроизвести музыку
-        }
+            
+        }*/
 
         private void OnTimer1Clicked(object sender, EventArgs e)
         {
             var duration = TimeSpan.FromSeconds(30);
             StartTimer(duration);
+            Timer1Button.IsEnabled = false;
+            Timer2Button.IsEnabled = false;
+            Timer3Button.IsEnabled = false;
+            Stop.IsVisible = true;
+            ExerciseButton.IsEnabled = false;
+            PlankButton.IsEnabled = false;
         }
 
         private void OnTimer2Clicked(object sender, EventArgs e)
         {
             var duration = TimeSpan.FromMinutes(1);
             StartTimer(duration);
+            Timer1Button.IsEnabled = false;
+            Timer2Button.IsEnabled = false;
+            Timer3Button.IsEnabled = false;
+            Stop.IsVisible = true;
+            ExerciseButton.IsEnabled = false;
+            PlankButton.IsEnabled = false;
         }
 
         private void OnTimer3Clicked(object sender, EventArgs e)
         {
             var duration = TimeSpan.FromMinutes(2);
             StartTimer(duration);
+            Timer1Button.IsEnabled = false;
+            Timer2Button.IsEnabled = false;
+            Timer3Button.IsEnabled = false;
+            Stop.IsVisible = true;
+            ExerciseButton.IsEnabled = false;
+            PlankButton.IsEnabled = false;
         }
 
         private void StartTimer(TimeSpan duration)
@@ -84,7 +118,14 @@ namespace App_Volkov
                 if (duration == TimeSpan.Zero)
                 {
                     TitleLabel.Text = "Таймер окончен";
-                    PlaySound();
+                    Stop.Text = "Начать заново.";
+                    try
+                    {
+                        Vibration.Vibrate();
+                        var a = TimeSpan.FromSeconds(5);
+                        Vibration.Vibrate(a);
+                    }
+                    catch (Exception) { }
 
                     isTimerRunning = false;
                     return false; // остановить таймер
@@ -96,6 +137,15 @@ namespace App_Volkov
         private void OnStopTimerClicked(object sender, EventArgs e)
         {
             shouldStopTimer = true;
+            Stop.IsVisible = false;
+            Timer1Button.IsVisible= false;
+            Timer2Button.IsVisible = false;
+            Timer3Button.IsVisible = false;
+            PlankImage.IsVisible= false;
+            ExerciseImage.IsVisible = false;
+            TitleLabel.IsVisible= false;
+            ExerciseButton.IsEnabled = true;
+            PlankButton.IsEnabled = true;
         }
     }
 }

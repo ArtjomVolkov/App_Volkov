@@ -14,6 +14,7 @@ namespace App_Volkov
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Horoskop : ContentPage
     {
+        // Создание словаря гороскопов и описаний
         Dictionary<string, string> horoscope = new Dictionary<string, string>//(StringComparer.OrdinalIgnoreCase)
         {
             {"Водолей", "21 января - 19 февраля.\nВы независимый и непринужденный мыслитель."},
@@ -29,7 +30,7 @@ namespace App_Volkov
             {"Стрелец", "23 ноября - 21 декабря.\nТы предприимчивый и независимый, с любовью к свободе."},
             {"Козерог", "22 декабря - 20 января.\nТы дисциплинированный и трудолюбивый, со стремлением к успеху."}
         };
-
+        // Создание словаря гороскопов и изображений
         Dictionary<string, string> horoscopeImg = new Dictionary<string, string>
         {
             {"Водолей", "vodoley.png"},
@@ -50,7 +51,7 @@ namespace App_Volkov
         public Horoskop()
         {
             InitializeComponent();
-
+            // Создаем список названий гороскопов из ключей словаря horoscope
             HoroscopeNames = new List<string>(horoscope.Keys);
             horoscopeListView.ItemsSource = HoroscopeNames;
         }
@@ -58,10 +59,10 @@ namespace App_Volkov
         private void HoroscopeDate(object sender, DateChangedEventArgs e)
         {
             DateTime selectedDate = e.NewDate;
-
+            // Получаем месяц и день из выбранной даты
             int month = selectedDate.Month;
             int day = selectedDate.Day;
-
+            // Получаем название гороскопа
             string horoscopeName = Horoscope(month, day);
 
             horoscopeDescriptionEditor.Text = horoscope[horoscopeName];
@@ -77,16 +78,6 @@ namespace App_Volkov
                 horoscopeDescriptionEditor.Text = horoscope[horoscopeName];
                 horoscopeImage.Source = horoscopeImg[horoscopeName];
             }
-            /*else if (horoscopeDescriptions.ContainsKey(horoscopeName.ToLower()))
-            {
-                horoscopeDescriptionEditor.Text = horoscopeDescriptions[horoscopeName];
-                horoscopeImage.Source = horoscopeImages[horoscopeName];
-            }
-            else if (horoscopeDescriptions.ContainsKey(horoscopeName.ToUpper()))
-            {
-                horoscopeDescriptionEditor.Text = horoscopeDescriptions[horoscopeName];
-                horoscopeImage.Source = horoscopeImages[horoscopeName];
-            }*/
         }
 
         private void HoroscopeList(object sender, SelectedItemChangedEventArgs e)

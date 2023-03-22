@@ -42,7 +42,7 @@
                    BackgroundColor="#FFFFFF" />
 
             <Editor x:Name="horoscopeDescriptionEditor"
-                    Text="{Binding SelectedHoroscopeDescription}"
+                    Text="{Binding horoscopeDescriptionEditor}"
                     VerticalOptions="FillAndExpand"
                     BackgroundColor="#FFFFFF"
                     HeightRequest="100"
