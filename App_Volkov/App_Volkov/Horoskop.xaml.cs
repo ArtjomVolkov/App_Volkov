@@ -66,7 +66,7 @@ namespace App_Volkov
             string horoscopeName = Horoscope(month, day);
 
             horoscopeDescriptionEditor.Text = horoscope[horoscopeName];
-            horoscopeImage.Source = horoscope[horoscopeName];
+            horoscopeImage.Source = horoscopeImg[horoscopeName];
         }
 
         private void HoroscopeNameEntry(object sender, TextChangedEventArgs e)

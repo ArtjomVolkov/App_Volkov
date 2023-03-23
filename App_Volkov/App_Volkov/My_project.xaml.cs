@@ -38,6 +38,7 @@ namespace App_Volkov
             Timer1Button.IsEnabled = true;
             Timer2Button.IsEnabled = true;
             Timer3Button.IsEnabled = true;
+            Stop.Text = "Стоп таймер";
         }
 
         private void ExerciseClicked(object sender, EventArgs e)
@@ -54,12 +55,6 @@ namespace App_Volkov
             Timer2Button.IsEnabled = true;
             Timer3Button.IsEnabled = true;
         }
-
-        /*private async void PlaySound()
-        {
-            await TextToSpeech.SpeakAsync("Таймер окончен");
-            
-        }*/
 
         private void OnTimer1Clicked(object sender, EventArgs e)
         {
@@ -118,7 +113,7 @@ namespace App_Volkov
                 if (duration == TimeSpan.Zero)
                 {
                     TitleLabel.Text = "Таймер окончен";
-                    Stop.Text = "Начать заново.";
+                    Stop.Text = "Начать заново";
                     try
                     {
                         Vibration.Vibrate();

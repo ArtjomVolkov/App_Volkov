@@ -53,7 +53,7 @@ namespace App_Volkov
 
         private void SaveTasks_Clicked(object sender, System.EventArgs e)
         {
-            Application.Current.Properties["Tasks"] = Newtonsoft.Json.JsonConvert.SerializeObject(tasks);
+            Application.Current.Properties["Taska"] = Newtonsoft.Json.JsonConvert.SerializeObject(tasks);
         }
         private async void ListViewItem(object sender, ItemTappedEventArgs e)
         {
